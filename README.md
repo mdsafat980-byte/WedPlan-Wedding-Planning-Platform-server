@@ -79,6 +79,8 @@ Better Auth is mounted at `/api/auth/*` and owns the `users`, `sessions`, `accou
   and one lowercase letter.
 - The JWT plugin exposes `GET /api/auth/token` and `GET /api/auth/jwks`.
 - Tokens expire after **1 hour**; the issuer and audience are both `BETTER_AUTH_URL`.
+- Google can link an existing account only when Google confirms the same email address is
+  verified; the local account does not need prior email verification.
 - A custom `definePayload` limits claims to `email`, `name` and `role`. The one-time
   `signupRole` field never leaks into a token.
 - Registration accepts `signupRole: "customer" | "vendor"`. A database hook maps it to `role`
