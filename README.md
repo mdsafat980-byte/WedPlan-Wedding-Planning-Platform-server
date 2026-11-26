@@ -4,6 +4,7 @@ The WedPlan backend: an **Express 5** REST API with **MongoDB/Mongoose**, **Bett
 (email/password, Google OAuth, JWT), **Stripe** subscriptions and **ImgBB** uploads.
 
 > Client repository: <https://github.com/mdsafat980-byte/WedPlan-Wedding-Planning-Platform>
+> Live client: <https://wed-plan-wedding-planning-platform.vercel.app>
 > API service: <https://wedplan-api-ngt2.onrender.com> (health:
 > <https://wedplan-api-ngt2.onrender.com/api/health>).
 > MongoDB is connected. Stripe Checkout/webhooks, Google sign-in and ImgBB uploads remain

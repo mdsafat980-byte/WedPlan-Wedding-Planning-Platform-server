@@ -30,6 +30,7 @@ function buildAuth() {
     }),
     trustedOrigins: [
       env.clientUrl,
+      "https://wed-plan-wedding-planning-platform.vercel.app",
       "http://localhost:3000",
       "http://127.0.0.1:3000",
     ],
