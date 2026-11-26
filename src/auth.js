@@ -40,6 +40,11 @@ function buildAuth() {
       maxPasswordLength: 128,
       autoSignIn: true,
     },
+    account: {
+      accountLinking: {
+        requireLocalEmailVerified: false,
+      },
+    },
     socialProviders:
       env.googleClientId && env.googleClientSecret
         ? {
