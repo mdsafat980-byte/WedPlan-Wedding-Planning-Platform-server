@@ -238,11 +238,18 @@ production.
 
 ## Deployment
 
-1. Create a MongoDB Atlas database and set `MONGODB_URI`.
-2. Deploy this folder as its own repository to Render, Railway, Fly.io or a Node host.
-3. Set `NODE_ENV=production`, `BETTER_AUTH_URL`, `CLIENT_URL`, `BETTER_AUTH_SECRET` and the
-   optional provider keys.
-4. Point Stripe's webhook at `/api/stripe/webhook`.
-5. Set `IMGBB_API_KEY` so uploads persist outside the ephemeral filesystem.
-6. Set the Google OAuth callback to `/api/auth/callback/google`.
-7. Add the live API URL and repository link to the top of this README.
+This repository includes a Render Blueprint in `render.yaml`.
+
+1. Create a MongoDB Atlas database/user and configure its network access for the API host.
+2. In Render, create a Blueprint from this repository and deploy `render.yaml`.
+3. Enter the required private environment values when prompted: `MONGODB_URI`,
+   `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `BETTER_AUTH_URL`, `PUBLIC_SERVER_URL` and `CLIENT_URL`.
+   Set both API URL values to the Render service URL and `CLIENT_URL` to the deployed client
+   origin. Render generates `BETTER_AUTH_SECRET`.
+4. Configure Stripe test-mode keys, webhook signing secret and Premium recurring Price ID
+   before testing checkout. The webhook endpoint is `/api/stripe/webhook`.
+5. Optionally add ImgBB and Google OAuth credentials. The Google callback is
+   `/api/auth/callback/google`.
+6. Verify `/api/health`, then test login, role permissions, booking and Stripe webhook flows.
+
+Never commit production credentials or use the local demo accounts in production.
