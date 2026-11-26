@@ -1,0 +1,47 @@
+{
+  "name": "wedplan-server",
+  "version": "1.0.0",
+  "description": "WedPlan REST API - Express, MongoDB, Better Auth, Stripe",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "seed": "node src/seed.js",
+    "seed:reset": "node src/seed.js --reset"
+  },
+  "keywords": [
+    "wedding",
+    "express",
+    "mongodb",
+    "better-auth",
+    "stripe"
+  ],
+  "author": "WedPlan",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "better-auth": "^1.7.28",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0",
+    "jose": "^6.2.18",
+    "jsonwebtoken": "^9.0.3",
+    "mongodb": "^7.9.1",
+    "mongodb-memory-server": "^11.4.0",
+    "mongoose": "^9.13.1",
+    "multer": "^2.5.0",
+    "stripe": "^23.2.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^26.6.11",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^7.0.2"
+  }
+}
