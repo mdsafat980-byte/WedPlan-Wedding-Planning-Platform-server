@@ -15,10 +15,15 @@ const vendorServiceFields =
 vendorRouter.get(
   "/stats",
   asyncHandler(async (req, res) => {
-    const [totalServices, activeServices, pendingBookings, acceptedBookings, pendingServices] =
+    const [totalServices, activeServices, serviceSlotsUsed, pendingBookings, acceptedBookings, pendingServices] =
       await Promise.all([
         Service.countDocuments({ vendorId: req.user._id }),
         Service.countDocuments({ vendorId: req.user._id, isActive: true, status: "approved" }),
+        Service.countDocuments({
+          vendorId: req.user._id,
+          isActive: true,
+          status: { $in: ["pending", "approved"] },
+        }),
         Booking.countDocuments({ vendorId: req.user._id, status: "pending" }),
         Booking.countDocuments({ vendorId: req.user._id, status: "accepted" }),
         Service.countDocuments({ vendorId: req.user._id, status: "pending" }),
@@ -27,6 +32,7 @@ vendorRouter.get(
     res.json({
       totalServices,
       activeServices,
+      serviceSlotsUsed,
       pendingBookings,
       acceptedBookings,
       pendingServices,
@@ -35,7 +41,7 @@ vendorRouter.get(
       subscriptionExpiresAt: req.user.subscriptionExpiresAt,
       freeLimit: FREE_ACTIVE_SERVICE_LIMIT,
       canPublishMore:
-        isPremium(req.user) || activeServices < FREE_ACTIVE_SERVICE_LIMIT,
+        isPremium(req.user) || serviceSlotsUsed < FREE_ACTIVE_SERVICE_LIMIT,
       businessName: req.user.businessName || "",
     });
   }),

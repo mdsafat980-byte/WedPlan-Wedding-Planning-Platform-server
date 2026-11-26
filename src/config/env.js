@@ -28,12 +28,22 @@ export const env = {
 
 export function assertProductionEnv() {
   if (!env.isProduction) return;
-  const required = ["authSecret", "mongoUri", "clientUrl", "authUrl"];
+  const required = [
+    "authSecret",
+    "mongoUri",
+    "clientUrl",
+    "authUrl",
+    "adminEmail",
+    "adminPassword",
+  ];
   const missing = required.filter((key) => !env[key]);
   if (missing.length) {
     throw new Error(`Missing required production environment variables: ${missing.join(", ")}`);
   }
   if (env.authSecret.length < 32) {
     throw new Error("BETTER_AUTH_SECRET must be at least 32 characters in production");
+  }
+  if (env.adminPassword.length < 12) {
+    throw new Error("ADMIN_PASSWORD must be at least 12 characters in production");
   }
 }

@@ -26,16 +26,24 @@ const isStripeReady = () =>
 subscriptionRouter.get(
   "/",
   asyncHandler(async (req, res) => {
-    const activeServices = await Service.countDocuments({
-      vendorId: req.user._id,
-      status: "approved",
-      isActive: true,
-    });
+    const [activeServices, serviceSlotsUsed] = await Promise.all([
+      Service.countDocuments({
+        vendorId: req.user._id,
+        status: "approved",
+        isActive: true,
+      }),
+      Service.countDocuments({
+        vendorId: req.user._id,
+        status: { $in: ["pending", "approved"] },
+        isActive: true,
+      }),
+    ]);
     res.json({
       plan: effectivePlan(req.user),
       subscriptionPlan: req.user.subscriptionPlan,
       subscriptionExpiresAt: req.user.subscriptionExpiresAt,
       activeServices,
+      serviceSlotsUsed,
       freeLimit: FREE_ACTIVE_SERVICE_LIMIT,
       premium: {
         price: 49,
