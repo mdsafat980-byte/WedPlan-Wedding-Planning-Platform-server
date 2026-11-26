@@ -4,8 +4,10 @@ The WedPlan backend: an **Express 5** REST API with **MongoDB/Mongoose**, **Bett
 (email/password, Google OAuth, JWT), **Stripe** subscriptions and **ImgBB** uploads.
 
 > Client repository: <https://github.com/mdsafat980-byte/WedPlan-Wedding-Planning-Platform>
-> API service: <https://wedplan-api-ngt2.onrender.com> (required production environment
-> variables are still pending; `/api/health` currently returns `503`).
+> API service: <https://wedplan-api-ngt2.onrender.com> (health:
+> <https://wedplan-api-ngt2.onrender.com/api/health>).
+> MongoDB is connected. Stripe Checkout/webhooks, Google sign-in and ImgBB uploads remain
+> disabled until their provider credentials are configured.
 
 ## Getting started
 

@@ -137,6 +137,9 @@ function buildAuth() {
       },
     },
     advanced: {
+      ipAddress: {
+        ipAddressHeaders: ["cf-connecting-ip"],
+      },
       useSecureCookies: env.isProduction,
       defaultCookieAttributes: {
         httpOnly: true,
