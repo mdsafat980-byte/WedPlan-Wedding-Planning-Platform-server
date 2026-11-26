@@ -3,8 +3,9 @@
 The WedPlan backend: an **Express 5** REST API with **MongoDB/Mongoose**, **Better Auth**
 (email/password, Google OAuth, JWT), **Stripe** subscriptions and **ImgBB** uploads.
 
-> Client repository: _add the client repository URL here._
-> Live API: _add the deployed API URL here._
+> Client repository: <https://github.com/mdsafat980-byte/WedPlan-Wedding-Planning-Platform>
+> API service: <https://wedplan-api-ngt2.onrender.com> (required production environment
+> variables are still pending; `/api/health` currently returns `503`).
 
 ## Getting started
 
